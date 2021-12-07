@@ -1,0 +1,51 @@
+ft_printf
+
+Mots-clefs :
+Kwargs
+libc
+cspdiuxX%
+Commande ar
+variadic
+
+
+Attention :
+Segmentation fault, bus error, double free, etc.
+Pas besoin de gérer de buffer
+
+Fichiers :
+Makefile
+	-werror -wextra -wall)
+	$(NAME)
+	all
+	clean
+	fclean
+	re
+	sources lift
+Libft (dossier)
+
+ft_printf.c 			oui
+ft_printf.h			oui
+ft_printf_char.c		oui (dans printf.c)
+ft_printf_dun.c		oui
+ft_printf_hex.c		oui
+ft_printf_int.c			oui
+ft_printf_ptr.c		oui
+ft_printf_str.c			oui
+ft_printf_utils.c		oui
+	
+Nom du programme :
+Libftprintf.a
+
+Testers :
+https://github.com/gavinfielder/pft # basic unit tests
+https://github.com/Mazoise/42TESTERS-PRINTF # multiple flags
+https://github.com/cacharle/ft_printf_test # randomly generated 
+
+
+
+Variadic : 
+
+Type : va_list
+Macro : va_start, va_arg, va_end
+Bibliothèque : <stdarg.h>
+
