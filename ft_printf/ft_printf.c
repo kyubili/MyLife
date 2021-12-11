@@ -50,7 +50,12 @@ int	ft_printf(const char *input, ...)
 	va_start(args, input);
 	while (input[i]) != '%')
 	{
-		
+		if (input[i] !='%')
+			ft_putchar_c(str[i], &count);
+		else if (input[i] == '%' && input[i + 1])
+			check_type(input[++i], args, &count);
+		i++;
 	}
-	
+	va_end(args);
+	return (count);
 }
