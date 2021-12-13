@@ -6,8 +6,13 @@
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:31:32 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/06 14:31:34 by imorina          ###   ########.fr       */
+/*   Updated: 2021/12/13 17:54:24 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_print_unsigneddec(unsigned int nbr, int *count)
+{
+	
+}
