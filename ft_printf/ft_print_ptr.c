@@ -12,4 +12,9 @@
 
 #include "ft_printf.h"
 
-
+int	ft_printf_ptr(void *ptr, int *count)
+{
+	ft_print_str("0x", count);
+	ft_print_hex((unsigned long)ptr, count, 'p');
+	return (*count);
+}
