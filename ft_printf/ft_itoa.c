@@ -1,30 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:31:22 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/20 22:00:51 by imorina          ###   ########.fr       */
+/*   Created: 2021/11/22 19:28:28 by imorina           #+#    #+#             */
+/*   Updated: 2021/12/20 20:15:03 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_str(char *str, int *count)
+int	ft_intlen(int n)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
-	if (str == NULL)
-		ft_print_str("(null)", count);
-	else
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n)
 	{
-		while (str[i])
-		{
-			ft_print_char(str[i], count);
-			i++;
-		}
+		len++;
+		n = n / 10;
 	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	char			*s;
+	unsigned int	len;
+	unsigned int	nbr;
+
+	len = ft_intlen(n);
+	s = ft_calloc(len + 1, 1);
+	if (!s)
+		return (NULL);
+	if (n == 0)
+		s[0] = '0';
+	if (n < 0)
+	{
+		nbr = n * -1;
+		s[0] = '-';
+	}
+	else
+		nbr = n;
+	while (nbr > 0)
+	{
+		s[--len] = '0' + (nbr % 10);
+		nbr /= 10;
+	}
+	return (s);
 }

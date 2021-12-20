@@ -1,4 +1,4 @@
-TIMEOUT_US 		= 400000 #if you timeout you can try to increase this value
+TIMEOUT_US 		= 30000 #if you timeout you can try to increase this value
 
 .DEFAULT_GOAL	:= m
 SHELL			= bash

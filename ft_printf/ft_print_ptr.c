@@ -6,15 +6,15 @@
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:30:53 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/06 14:30:55 by imorina          ###   ########.fr       */
+/*   Updated: 2021/12/20 21:29:32 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_ptr(void *ptr, int *count)
+void	ft_print_ptr(unsigned long int ptr, int *count)
 {
 	ft_print_str("0x", count);
-	ft_print_hex((unsigned long)ptr, count, 'p');
-	return (*count);
+	ft_print_hex_long(ptr, count, 0);
 }
+

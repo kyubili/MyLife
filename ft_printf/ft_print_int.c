@@ -6,19 +6,26 @@
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:31:41 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/13 15:46:05 by imorina          ###   ########.fr       */
+/*   Updated: 2021/12/20 21:13:44 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_int(int nbr, int *count)
+void	ft_print_int(int nbr, int *count)
 {
-	char	*r;
-	
-	r = ft_itoa(nbr);
-	ft_putstr_fd(nbr, 1);
-	*count += ft_strlen(nbr);
-	free (r);
-	return (count);	
+	if (nbr == -2147483648)
+		ft_print_str("-2147483648", count);
+	else if (nbr >= 0 && nbr <= 9)
+	   ft_print_char(nbr + '0', count);
+	else if (nbr < 0)
+	{
+		ft_print_char('-', count);
+		ft_print_int(nbr * (-1), count);
+	}
+	else
+	{
+		ft_print_int(nbr / 10, count);
+		ft_print_int(nbr % 10, count);
+	}
 }

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:31:22 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/20 22:00:51 by imorina          ###   ########.fr       */
+/*   Created: 2021/11/21 16:19:36 by imorina           #+#    #+#             */
+/*   Updated: 2021/12/20 20:14:25 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_str(char *str, int *count)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	unsigned int	number;
 
-	i = 0;
-	if (str == NULL)
-		ft_print_str("(null)", count);
+	number = n;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		number *= -1;
+	}
+	if (number > 9)
+	{
+		ft_putnbr_fd(number / 10, fd);
+		ft_putnbr_fd(number % 10, fd);
+	}
 	else
 	{
-		while (str[i])
-		{
-			ft_print_char(str[i], count);
-			i++;
-		}
+		ft_putchar_fd(number + '0', fd);
 	}
 }

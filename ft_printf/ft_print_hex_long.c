@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_hex_long.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:31:22 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/20 22:00:51 by imorina          ###   ########.fr       */
+/*   Created: 2021/12/20 21:25:54 by imorina           #+#    #+#             */
+/*   Updated: 2021/12/20 21:26:04 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_str(char *str, int *count)
+void	ft_print_hex_long(unsigned long int n, int *count, int format)
 {
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-		ft_print_str("(null)", count);
+	char	*base;
+	
+	if(format == 0)
+		base = "0123456789abcdef";
 	else
+		base = "0123456789ABCDEF";
+	if (n >= 0 && n <= 15)
+		ft_print_char(base[n], count);
+	else if (n > 15)
 	{
-		while (str[i])
-		{
-			ft_print_char(str[i], count);
-			i++;
-		}
+		ft_print_hex(n / 16, count, format);
+		ft_print_hex(n % 16, count, format);
 	}
 }

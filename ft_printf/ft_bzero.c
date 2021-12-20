@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:31:22 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/20 22:00:51 by imorina          ###   ########.fr       */
+/*   Created: 2021/11/01 20:44:51 by imorina           #+#    #+#             */
+/*   Updated: 2021/12/20 20:13:25 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_str(char *str, int *count)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (str == NULL)
-		ft_print_str("(null)", count);
-	else
+	while (i < n)
 	{
-		while (str[i])
-		{
-			ft_print_char(str[i], count);
-			i++;
-		}
+		((char *)s)[i] = 0;
+		i++;
 	}
 }

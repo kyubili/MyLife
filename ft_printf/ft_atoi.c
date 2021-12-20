@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 14:31:22 by imorina           #+#    #+#             */
-/*   Updated: 2021/12/20 22:00:51 by imorina          ###   ########.fr       */
+/*   Created: 2021/11/27 20:56:30 by imorina           #+#    #+#             */
+/*   Updated: 2021/11/29 14:23:18 by imorina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_print_str(char *str, int *count)
+int	ft_atoi(const char *str)
 {
-	int	i;
+	int				i;
+	unsigned int	num;
+	unsigned int	neg;
 
 	i = 0;
-	if (str == NULL)
-		ft_print_str("(null)", count);
-	else
+	neg = 1;
+	num = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		while (str[i])
-		{
-			ft_print_char(str[i], count);
-			i++;
-		}
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
 	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		num = num * 10 + (str[i] - 48);
+		i++;
+	}
+	return (num * neg);
 }

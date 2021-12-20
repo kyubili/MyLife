@@ -5,38 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: imorina <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/06 14:32:22 by imorina           #+#    #+#              #
-#    Updated: 2021/12/06 14:32:27 by imorina          ###   ########.fr        #
+#    Created: 2021/12/20 21:36:19 by imorina           #+#    #+#              #
+#    Updated: 2021/12/20 21:43:07 by imorina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT		=	./libft			# variable libft
-LIBNAME		=	libft.a			# " crée un libft.a
-NAME		=	libftprintf.a		# " crée un libft.h
-CFLAGS		=	-Wall -Werror -Wextra -c
-CC		=	gcc
-RM		=	rm -f			# " supprimer
-AR		=	ar -rcs			# " archiver
-FILES		=	ft_printf.c
+SRCS		=	ft_printf.c \
+				ft_print_char.c \
+				ft_print_str.c \
+				ft_print_ptr.c \
+				ft_print_hex.c \
+				ft_print_int.c \
+				ft_strlen.c		 \
+				ft_bzero.c	 \
+				ft_itoa_unsigned.c \
+				ft_calloc.c	 \
+				ft_itoa.c ft_print_hex_long.c  \
+				ft_putchar_fd.c	ft_putstr_fd.c	ft_putendl_fd.c		 \
+				ft_putnbr_fd.c
 
-OBJ		=	$(FILES:.c=.o)		# transforme tous les .c en .o
+OBJS			= $(SRCS:.c=.o)
 
-all: $(NAME)
+CC				= gcc
+RM				= rm -f
+CFLAGS			= -Wall -Wextra -Werror
 
-$(NAME):
-	@$(MAKE) -C $(LIBFT)			# compiler la libft
-	@cp $(LINFT)/$(LIBNAEM) $(NAME)		# copier la libft dans libftprintf.a
-	@$(CC) $(CFLAGS) $(FILES)		# compiler + flags + fichiers
-	@$(AR) $(NAME) $(OBJ)			# archiver / sauvegarder .o
+NAME			= libftprintf.a
+
+all:			$(NAME)
+
+$(NAME):		$(OBJS)
+				ar rcs $(NAME) $(OBJS)
 
 clean:
-	@$(RM) $(OBJ)				# supprimer les .o de ft_printf
-	@$(make) -C $(LIBFT) clean		# via commande make clean
+				$(RM) $(OBJS) $(BONUS_OBJS)
 
-fclean: clean					# référence à clean
-	@$(RM) $(NAME)				# supprimer libft.a & libftprintf.a
-	@$(MAKE) -C $(LIBFT) fclean		
+fclean:			clean
+				$(RM) $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re test tclean valgrind
+re:				fclean $(NAME)
